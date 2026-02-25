@@ -1,0 +1,98 @@
+import streamlit as st
+
+# --- CONFIGURASI HALAMAN ---
+st.set_page_config(page_title="Azizah English Learning", page_icon="📚")
+
+# --- STYLE CSS CUSTOM ---
+st.markdown("""
+    <style>
+    .main { background-color: #f0f2f6; }
+    .stButton>button { width: 100%; border-radius: 20px; background-color: #007bff; color: white; }
+    .author-box { padding: 20px; border-radius: 15px; background-color: #ffffff; border-left: 5px solid #007bff; }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- SIDEBAR (MENU UTAMA) ---
+st.sidebar.title("Azizah App Menu")
+menu = st.sidebar.radio("Pilih Fitur:", 
+    ["🏠 Home", "👤 Meet the Author", "📚 Vocab & Grammar", "💬 Conversation", "😎 Slang & Idioms", "📖 Story Time", "🔢 Numbers"])
+
+# --- HALAMAN HOME ---
+if menu == "🏠 Home":
+    st.title("Azizah: Make You Easy Learning English")
+    st.image("https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&q=80&w=1000", caption="Unlocking Your English Potential")
+    st.write("### Selamat Datang di Aplikasi Azizah!")
+    st.info("Pilih menu di samping untuk mulai belajar bahasa Inggris dengan cara yang mudah dan seru!")
+    
+    st.subheader("Word of the Day")
+    st.success("**Achievement** (Pencapaian) - *Something done successfully.*")
+
+# --- HALAMAN BIOGRAFI ---
+elif menu == "👤 Meet the Author":
+    st.title("Meet the Author")
+    st.markdown("""
+    <div class="author-box">
+    <h3>Nur Azizah</h3>
+    <p><b>Lahir:</b> Batuah, Kalimantan Tengah, 16 Juli 2002</p>
+    <p>Besar di Kalimantan Tengah dan melanjutkan sekolah di <b>Ende, Nusa Tenggara Timur (NTT)</b>. Lulus SMA tahun 2020.</p>
+    <hr>
+    <p><i>"I want the people who read my book to feel empowered. Your background doesn't define how far you can go. Let's learn together!"</i></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# --- HALAMAN VOCAB & GRAMMAR ---
+elif menu == "📚 Vocab & Grammar":
+    st.header("Bab 1: Dasar Perkenalan")
+    
+    tab1, tab2 = st.tabs(["Vocabulary", "Grammar"])
+    
+    with tab1:
+        st.write("### Common Words")
+        vocabs = {"Introduce": "Memperkenalkan", "Origin": "Asal", "Dream": "Mimpi", "Proud": "Bangga"}
+        for k, v in vocabs.items():
+            st.write(f"🔊 **{k}** : {v}")
+            
+    with tab2:
+        st.write("### To Be (Am, Is, Are)")
+        st.code("I + am\nYou/We/They + are\nHe/She/It + is", language="text")
+        st.write("**Contoh:** I am Azizah. (Saya adalah Azizah)")
+
+# --- HALAMAN CONVERSATION ---
+elif menu == "💬 Conversation":
+    st.header("Basic Conversation")
+    st.write("**A:** Hi, my name is Azizah. What is your name?")
+    st.write("**B:** Hi, I am [Your Name]. Nice to meet you!")
+    
+    if st.button("Lihat Terjemahan"):
+        st.write("*A: Hai, nama saya Azizah. Siapa namamu?*")
+        st.write("*B: Hai, saya [Nama Anda]. Senang bertemu denganmu!*")
+
+# --- HALAMAN SLANG ---
+elif menu == "😎 Slang & Idioms":
+    st.header("Slang Word & Idioms")
+    st.warning("Gunakan ini agar terdengar seperti penutur asli!")
+    
+    st.write("1. **No Cap** = Jujur / Gak bohong.")
+    st.write("2. **Slay** = Melakukan sesuatu dengan keren.")
+    st.write("3. **Piece of cake** = Sangat mudah.")
+
+# --- HALAMAN STORY ---
+elif menu == "📖 Story Time":
+    st.header("Story for Learning")
+    st.subheader("The Small Seed")
+    st.write("Once, there was a small seed in a big forest. It wanted to be a tall tree...")
+    
+    if st.button("Baca Terjemahan"):
+        st.write("Dahulu kala, ada sebuah biji kecil di hutan yang besar. Ia ingin menjadi pohon yang tinggi...")
+
+# --- HALAMAN NUMBERS ---
+elif menu == "🔢 Numbers":
+    st.header("Number Station")
+    st.write("- 1st (First): Pertama")
+    st.write("- 2nd (Second): Kedua")
+    st.write("- 3rd (Third): Ketiga")
+    st.write("**Contoh:** This is my first time. (Ini adalah kali pertama saya).")
+
+# --- FOOTER ---
+st.sidebar.markdown("---")
+st.sidebar.write("© 2024 Nur Azizah - English App")
